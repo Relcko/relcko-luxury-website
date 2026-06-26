@@ -70,8 +70,20 @@
 - [x] Build verification passed
 - [x] Git commit pushed
 
-## Phase 06B–06H — Homepage Sections
-- [ ] About section
+## Phase 06B — About ✅
+- [x] AboutContent: staggered scroll-reveal container
+- [x] AboutHeading: eyebrow + heading with split animations
+- [x] AboutDescription: paragraph stack
+- [x] AboutFeatureCard: feature cards with icon registry
+- [x] AboutFeatures: nested stagger for feature cards
+- [x] AboutCTA: link button
+- [x] AboutMedia: image with accent badge reveal
+- [x] about-section: section wrapper with 2-col grid
+- [x] lib/about: CMS-ready content model + mock data
+- [x] Build verification passed
+- [x] Git commit pushed
+
+## Phase 06C–06H — Homepage Sections
 - [ ] Ownership journey
 - [ ] Platform advantages
 - [ ] Statistics counters
