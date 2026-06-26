@@ -1,23 +1,82 @@
 @import "tailwindcss";
 
-/* Dark luxury design tokens — Refined Build Spec §5 */
 @theme {
+  /* ===== Color system (Spec §5) ===== */
   --color-bg-base: #0b0b0b;
   --color-bg-elevated: #121212;
+  --color-bg-surface: #1a1a1a;
   --color-accent-gold: #c8a26a;
+  --color-accent-gold-hover: #d8b681;
+  --color-accent-gold-muted: rgba(200, 162, 106, 0.16);
   --color-text-primary: #f7f7f5;
   --color-text-muted: rgba(247, 247, 245, 0.64);
+  --color-text-subtle: rgba(247, 247, 245, 0.4);
+  --color-text-inverse: #0b0b0b;
+  --color-border: rgba(247, 247, 245, 0.12);
+  --color-border-strong: rgba(247, 247, 245, 0.24);
+  --color-danger: #e5484d;
+  --color-success: #46a758;
 
-  /* Typefaces wired from next/font CSS variables (lib/fonts.ts) */
+  /* ===== Typography ===== */
   --font-display: var(--font-display-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
 
-  /* Layout */
+  /* Fluid type scale (clamp) — Spec §5 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.8vw, 2.75rem);
+  --text-4xl: clamp(2.5rem, 1.9rem + 3vw, 4rem);
+  --text-5xl: clamp(3.25rem, 2.2rem + 5vw, 6rem);
+
+  /* ===== Spacing (4px base) ===== */
+  --spacing: 0.25rem;
+
+  /* ===== Radius ===== */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ===== Shadows (dark-tuned) ===== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 1px var(--color-accent-gold-muted),
+    0 8px 32px rgba(200, 162, 106, 0.12);
+
+  /* ===== Breakpoints (360 → 1920) ===== */
+  --breakpoint-xs: 22.5rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+  --breakpoint-3xl: 120rem;
+
+  /* ===== Container widths ===== */
+  --container-narrow: 48rem;
+  --container-content: 80rem;
   --container-max: 1600px;
 }
 
 :root {
   color-scheme: dark;
+
+  /* ===== Z-index scale ===== */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-toast: 500;
+  --z-max: 999;
 }
 
 html {
@@ -32,7 +91,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Spec §9: respect reduced-motion globally from day one */
+/* Spec §9: respect reduced-motion globally */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

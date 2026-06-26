@@ -1,4 +1,8 @@
-import { Container } from "@/components/layout/container";
+import { Section } from "@/components/ui/section";
+import { Stack } from "@/components/ui/stack";
+import { Badge } from "@/components/ui/badge";
+import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
 
 interface PlaceholderScreenProps {
   eyebrow: string;
@@ -9,6 +13,7 @@ interface PlaceholderScreenProps {
 /**
  * Shared scaffold screen for Phase 01 placeholder routes. Keeps every route DRY
  * and visually consistent; real sections replace these in later phases.
+ * Dogfoods the design system primitives.
  */
 export function PlaceholderScreen({
   eyebrow,
@@ -16,16 +21,18 @@ export function PlaceholderScreen({
   description,
 }: PlaceholderScreenProps) {
   return (
-    <Container className="flex min-h-[70vh] flex-col justify-center py-32">
-      <p className="text-sm uppercase tracking-[0.3em] text-accent-gold">
-        {eyebrow}
-      </p>
-      <h1 className="mt-4 font-display text-5xl leading-tight md:text-7xl">
-        {title}
-      </h1>
-      {description ? (
-        <p className="mt-6 max-w-xl text-lg text-text-muted">{description}</p>
-      ) : null}
-    </Container>
+    <Section spacing="lg" className="flex min-h-[70vh] items-center">
+      <Stack gap="md" align="start">
+        <Badge variant="outline">{eyebrow}</Badge>
+        <Heading level={1} size="display">
+          {title}
+        </Heading>
+        {description ? (
+          <Text size="lg" className="max-w-xl">
+            {description}
+          </Text>
+        ) : null}
+      </Stack>
+    </Section>
   );
 }
