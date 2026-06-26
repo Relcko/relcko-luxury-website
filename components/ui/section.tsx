@@ -7,6 +7,7 @@ export type SectionSpacing = "sm" | "md" | "lg";
 
 export interface SectionProps {
   as?: ElementType;
+  id?: string;
   spacing?: SectionSpacing;
   containerSize?: ContainerSize;
   /** When true, render children full-bleed with no inner Container. */
@@ -24,6 +25,7 @@ const spacingStyles: Record<SectionSpacing, string> = {
 /** Vertical-rhythm wrapper for page sections (Spec §5 "sections breathe"). */
 export function Section({
   as: Tag = "section",
+  id,
   spacing = "md",
   containerSize = "max",
   bleed = false,
@@ -31,7 +33,7 @@ export function Section({
   children,
 }: SectionProps) {
   return (
-    <Tag className={cn(spacingStyles[spacing], className)}>
+    <Tag id={id} className={cn(spacingStyles[spacing], className)}>
       {bleed ? children : <Container size={containerSize}>{children}</Container>}
     </Tag>
   );

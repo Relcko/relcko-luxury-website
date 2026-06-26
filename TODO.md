@@ -49,7 +49,7 @@
 - [x] Custom cursor integration
 - [x] Magnetic CTA buttons
 
-## Phase 05C — Hero Performance & Polish ✅
+## Phase 05C — Hero Performance & Polish ✅ (VERIFIED)
 - [x] Lazy loading (useHeroVideo hook - idle/connection-aware)
 - [x] Poster-as-LCP strategy (priority + fetchPriority)
 - [x] Multi-source video support (webm/mp4)
@@ -57,8 +57,7 @@
 - [x] Reduced motion support
 - [x] Image pipeline (AVIF/WebP, deviceSizes, remotePatterns)
 - [x] Font loading optimization (preconnect)
-- [x] Build verification (lint, typecheck, build)
-- [x] Git commit + tag pushed
+- [x] Build verification (lint ✓ typecheck ✓ build ✓)
 
 ## Phase 06A — Featured Projects ✅
 - [x] Project interface (lib/project.ts)
@@ -67,10 +66,9 @@
 - [x] FeaturedProjects section component
 - [x] Project grid layout
 - [x] Card hover states
-- [x] Build verification passed
-- [x] Git commit pushed
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
 
-## Phase 06B — About ✅
+## Phase 06B — About Section ✅
 - [x] AboutContent: staggered scroll-reveal container
 - [x] AboutHeading: eyebrow + heading with split animations
 - [x] AboutDescription: paragraph stack
@@ -80,13 +78,41 @@
 - [x] AboutMedia: image with accent badge reveal
 - [x] about-section: section wrapper with 2-col grid
 - [x] lib/about: CMS-ready content model + mock data
-- [x] Build verification passed
-- [x] Git commit pushed
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
 
-## Phase 06C–06H — Homepage Sections
-- [ ] Ownership journey
-- [ ] Platform advantages
-- [ ] Statistics counters
+## Phase 06C — Ownership Journey ✅
+- [x] JourneyHeader: editorial intro with eyebrow/heading/description
+- [x] JourneyTimeline: vertical timeline with connecting lines
+- [x] JourneyStep: step card with number, title, description
+- [x] JourneyConnector: animated SVG line between steps
+- [x] JourneyCTA: link to inquiry page
+- [x] OwnershipJourney: section wrapper with grid layout
+- [x] lib/ownership: CMS-ready content model + mock data
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
+
+## Phase 06D — Platform Advantages & Trust ✅
+- [x] PlatformAdvantages: section orchestrator with 2-col grid
+- [x] AdvantagesHeader: sticky editorial intro (eyebrow/heading/description)
+- [x] AdvantagesGrid: 2×3 responsive grid with stagger animation
+- [x] AdvantageCard: card shell + CSS hover lift
+- [x] AdvantageIcon: inline SVG icon registry (6 icons)
+- [x] AdvantageTitle: h3 wrapper
+- [x] AdvantageDescription: muted body copy
+- [x] lib/platform-advantages: CMS-ready content model + mock data
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
+
+## Phase 06E — Global Impact & Statistics ✅
+- [x] GlobalImpact: section orchestrator with statistics grid
+- [x] ImpactHeader: centered intro with eyebrow/heading/description
+- [x] StatisticsGrid: responsive 1→2→3 column statistics grid
+- [x] StatisticCard: value/label/description stack with label reveal
+- [x] StatisticValue: animated counter with prefix/suffix
+- [x] StatisticLabel: eyebrow label above value
+- [x] StatisticDescription: muted description below value
+- [x] lib/global-impact: CMS-ready content model + mock data (6 metrics)
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
+
+## Phase 06F–06H — Homepage Sections
 - [ ] Gallery showcase
 - [ ] Call to action
 - [ ] Footer

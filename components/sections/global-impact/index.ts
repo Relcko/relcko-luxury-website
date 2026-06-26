@@ -1,0 +1,7 @@
+export { GlobalImpact } from "./GlobalImpact"
+export { ImpactHeader } from "./ImpactHeader"
+export { StatisticsGrid } from "./StatisticsGrid"
+export { StatisticCard } from "./StatisticCard"
+export { StatisticValue } from "./StatisticValue"
+export { StatisticLabel } from "./StatisticLabel"
+export { StatisticDescription } from "./StatisticDescription"

@@ -7,12 +7,13 @@ import { AboutMedia } from "./AboutMedia";
 import { aboutContent } from "@/lib/about";
 
 type AboutSectionProps = {
-	className?: string;
-};
+	id?: string
+	className?: string
+}
 
-export function AboutSection({ className }: AboutSectionProps) {
+export function AboutSection({ id, className }: AboutSectionProps) {
 	return (
-		<Section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
+		<Section id={id} className={cn("relative overflow-hidden py-20 md:py-32", className)}>
 			<Container>
 				<div className="grid gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
 					<AboutContent

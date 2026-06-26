@@ -1,0 +1,6 @@
+export { OwnershipJourney } from "./OwnershipJourney"
+export { JourneyHeader } from "./JourneyHeader"
+export { JourneyTimeline } from "./JourneyTimeline"
+export { JourneyStep } from "./JourneyStep"
+export { JourneyConnector } from "./JourneyConnector"
+export { JourneyCTA } from "./JourneyCTA"

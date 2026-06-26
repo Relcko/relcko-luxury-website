@@ -1,0 +1,7 @@
+export { PlatformAdvantages } from "./PlatformAdvantages"
+export { AdvantagesHeader } from "./AdvantagesHeader"
+export { AdvantagesGrid } from "./AdvantagesGrid"
+export { AdvantageCard } from "./AdvantageCard"
+export { AdvantageIcon } from "./AdvantageIcon"
+export { AdvantageTitle } from "./AdvantageTitle"
+export { AdvantageDescription } from "./AdvantageDescription"
