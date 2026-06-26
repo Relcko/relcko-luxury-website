@@ -22,6 +22,10 @@ export type { HeadingProps, HeadingLevel, HeadingSize } from "./heading";
 export { Input } from "./input";
 export type { InputProps } from "./input";
 
+export { MagneticButton } from "./magnetic-button";
+
+export { CustomCursor } from "./custom-cursor";
+
 export { Label } from "./label";
 export type { LabelProps } from "./label";
 
