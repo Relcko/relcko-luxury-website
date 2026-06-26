@@ -49,10 +49,16 @@
 - [x] Custom cursor integration
 - [x] Magnetic CTA buttons
 
-## Phase 05C — Hero Performance & Polish
-- [ ] Lazy loading
-- [ ] Reduced motion support
-- [ ] Lighthouse tuning
+## Phase 05C — Hero Performance & Polish ✅
+- [x] Lazy loading (useHeroVideo hook - idle/connection-aware)
+- [x] Poster-as-LCP strategy (priority + fetchPriority)
+- [x] Multi-source video support (webm/mp4)
+- [x] Will-change optimization (transient GPU layers)
+- [x] Reduced motion support
+- [x] Image pipeline (AVIF/WebP, deviceSizes, remotePatterns)
+- [x] Font loading optimization (preconnect)
+- [x] Build verification (lint, typecheck, build)
+- [x] Git commit + tag pushed
 
 ## Phase 06A — Featured Projects
 - [ ] Project grid
