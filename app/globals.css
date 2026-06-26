@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* Dark luxury design tokens — Refined Build Spec §5 */
+@theme {
+  --color-bg-base: #0b0b0b;
+  --color-bg-elevated: #121212;
+  --color-accent-gold: #c8a26a;
+  --color-text-primary: #f7f7f5;
+  --color-text-muted: rgba(247, 247, 245, 0.64);
+
+  /* Typefaces wired from next/font CSS variables (lib/fonts.ts) */
+  --font-display: var(--font-display-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --container-max: 1600px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Spec §9: respect reduced-motion globally from day one */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,249 @@
+﻿Task,Acceptance Criteria,Dependencies,Estimated Time,Files to Create/Edit,Phase,Priority,QA Checklist,Status,Task ID
+Enable strict TypeScript config,"strict: true, noUncheckedIndexedAccess, no implicit any; path aliases (@/*) configured; type-check script passes.",P01-001,0.5h,tsconfig.json,Phase 01 — Project Foundation,Critical,"- [ ] tsc --noEmit passes
+- [ ] @/* alias resolves
+- [ ] No any permitted by config",Not started,P01-002
+Initialize Next.js 15 app (App Router),App scaffolds via create-next-app with App Router + TS; dev server runs clean on http://localhost:3000; React 19 + Next 15 versions pinned in package.json.,None,1h,"package.json, next.config.ts, app/layout.tsx, app/page.tsx, tsconfig.json",Phase 01 — Project Foundation,Critical,"- [ ] pnpm dev boots without errors
+- [ ] App Router (/app) in use, not Pages
+- [ ] Versions match master spec §3",Not started,P01-001
+Configure Tailwind CSS,Tailwind wired with content globs for /app and /components; base layer imports globals; utility classes render in a test page.,P01-001,0.5h,"tailwind.config.ts, postcss.config.mjs, styles/globals.css",Phase 01 — Project Foundation,Critical,"- [ ] Utility class styles a test element
+- [ ] No PostCSS build warnings
+- [ ] globals.css imported in root layout",Not started,P01-003
+Set up ESLint + Prettier,Lint + format scripts exist and pass on a clean tree; Tailwind class sorting plugin enabled; no rule conflicts between ESLint and Prettier.,P01-002,1h,".eslintrc / eslint.config.mjs, .prettierrc, .prettierignore, package.json scripts",Phase 01 — Project Foundation,High,"- [ ] lint passes
+- [ ] format:check passes
+- [ ] Editor format-on-save documented in README",Not started,P01-004
+Create base folder structure,Folder tree matches master spec §7 exactly; each dir has an index or .gitkeep; no stray boilerplate folders.,P01-001,0.5h,"/app, /components/ui, /components/sections, /components/three, /hooks, /lib, /utils, /styles, /public, /assets",Phase 01 — Project Foundation,High,"- [ ] Tree matches spec §7
+- [ ] Empty dirs tracked
+- [ ] No unused default folders",Not started,P01-005
+Define design tokens (CSS variables),"Color tokens from master spec §5 (--bg-base, --bg-elevated, --accent-gold, --text-primary, --text-muted) defined as CSS vars and mapped into Tailwind theme; spacing scale on 4px base.",P01-003,1h,"styles/tokens.css, tailwind.config.ts (theme.extend)",Phase 01 — Project Foundation,High,"- [ ] All §5 colors present
+- [ ] Tailwind exposes token utilities
+- [ ] 4px spacing scale defined",Not started,P01-006
+Implement dark theme system,"Dark luxury palette applied at root; background #0B0B0B, text #F7F7F5 by default; color-scheme set; no FOUC.",P01-006,0.5h,"app/layout.tsx, styles/globals.css",Phase 01 — Project Foundation,Medium,"- [ ] Dark base renders on all routes
+- [ ] No flash of unstyled/light content
+- [ ] Contrast meets AA",Not started,P01-007
+Install motion + 3D dependencies,"lenis, gsap, framer-motion, three, @react-three/fiber, @react-three/drei, split-type installed and pinned; app still builds. No engines initialized yet (no animations in Phase 1).",P01-001,0.5h,package.json,Phase 01 — Project Foundation,Critical,"- [ ] All libs in dependencies
+- [ ] Build succeeds post-install
+- [ ] No engine init code added yet",Not started,P01-009
+Configure font loading (next/font),Display + body fonts loaded via next/font with display:swap; CSS variables exposed for Tailwind; fallback metrics set to avoid layout shift.,P01-006,1h,"lib/fonts.ts, app/layout.tsx",Phase 01 — Project Foundation,Medium,"- [ ] Fonts self-hosted via next/font
+- [ ] No CLS from font swap
+- [ ] Heading vs body fonts distinct",Not started,P01-008
+Build root layout + placeholder routes,"Every route in master spec §4 exists as a minimal placeholder page; root layout wraps all; navigation between routes works. No hero, no animations.","P01-005,P01-007",1.5h,"app/layout.tsx, app/page.tsx, app/projects/page.tsx, app/communities/page.tsx, app/lifestyle/page.tsx, app/innovation/page.tsx, app/news/page.tsx, app/careers/page.tsx, app/contact/page.tsx",Phase 01 — Project Foundation,High,"- [ ] All §4 routes resolve (no 404)
+- [ ] Shared layout applied
+- [ ] Placeholders only, no UI features",Not started,P01-010
+Git configuration + environment variables,".gitignore covers node_modules/.next/env; .env.example documents all required vars (CMS, site URL) with no secrets committed; Node version pinned.",P01-001,0.5h,".gitignore, .env.example, .nvmrc",Phase 01 — Project Foundation,Medium,"- [ ] No secrets in repo
+- [ ] .env.example complete
+- [ ] Clean git status after build",Not started,P01-011
+README + npm scripts + Phase 1 verification,"README documents setup, env vars, scripts; dev/build/lint/format/type-check scripts all pass; production build succeeds with zero errors.","P01-004,P01-010",1h,"http://README.md, package.json scripts",Phase 01 — Project Foundation,Low,"- [ ] build succeeds
+- [ ] All scripts documented
+- [ ] Fresh clone runs from README alone",Not started,P01-012
+"Elevation, hairlines & surface utilities",Card surface uses --bg-elevated; gold hairline borders; consistent radius/shadow tokens; subtle noise/texture optional.,P01-006,1h,"styles/utilities.css, components/ui/Card.tsx",Phase 02 — Design System,Medium,"- [ ] Surfaces consistent
+- [ ] Hairlines meet AA on dark
+- [ ] Reusable Card primitive",Not started,P02-004
+Button primitive with variants,Reusable Button with primary/secondary/ghost variants + sizes; typed props; accessible focus ring; gold accent variant.,P02-001,1h,components/ui/Button.tsx,Phase 02 — Design System,High,"- [ ] Keyboard focus visible
+- [ ] All variants typed
+- [ ] Used by later phases, not re-implemented",Not started,P02-002
+Original branding: logo + iconography,"Original wordmark/logo placeholder (NOT Hubtown's); icon set wired; SVG, responsive, theme-aware. Distinct brand identity per recommendation.",P02-001,1.5h,"components/ui/Logo.tsx, public/brand/*, components/ui/Icon.tsx",Phase 02 — Design System,Medium,"- [ ] No proprietary Hubtown assets
+- [ ] Logo scales crisply
+- [ ] Icons accessible (aria-hidden/labels)",Not started,P02-005
+Fluid typography + type scale,Editorial type scale using clamp(); heading/body styles map to fonts from §5; consistent line-height and tracking utilities.,"P01-006,P01-008",1.5h,"styles/typography.css, tailwind.config.ts",Phase 02 — Design System,High,"- [ ] Scales smoothly 360→1920
+- [ ] Headlines use display font
+- [ ] No overflow at small sizes",Not started,P02-001
+"Layout primitives (Container, Grid, Section)",12-column grid + 1600px max container + Section vertical rhythm primitives; responsive gutters; reused across all sections.,P01-006,1.5h,"components/ui/Container.tsx, Grid.tsx, Section.tsx",Phase 02 — Design System,High,"- [ ] Max width 1600px enforced
+- [ ] 12-col grid usable
+- [ ] No layout overflow",Not started,P02-003
+Design system preview/reference page,"Internal styleguide route renders all tokens, type scale, buttons, and primitives for visual QA; excluded from production sitemap.","P02-002,P02-003,P02-004",1h,app/(dev)/styleguide/page.tsx,Phase 02 — Design System,Low,"- [ ] All primitives shown
+- [ ] Not indexed in sitemap/robots
+- [ ] Matches tokens exactly",Not started,P02-006
+Sticky transparent navbar shell,Fixed transparent nav over hero; links to all §4 routes; gold animated underline on hover; semantic <nav> + landmarks.,"P02-002,P02-005",1.5h,"components/sections/Navbar.tsx, app/layout.tsx",Phase 03 — Navigation,High,"- [ ] Keyboard navigable
+- [ ] Underline animates
+- [ ] Transparent over hero",Not started,P03-001
+Shrink-on-scroll + background solidify,Nav shrinks and gains solid bg after hero threshold; smooth transition; respects prefers-reduced-motion.,P03-001,1h,"components/sections/Navbar.tsx, hooks/useScrollDirection.ts",Phase 03 — Navigation,Medium,"- [ ] No layout jank on scroll
+- [ ] Reduced-motion path
+- [ ] 60 FPS during transition",Not started,P03-002
+Mega menu,Mega menu reveals project/community categories with imagery; Framer Motion enter/exit; focus trap + ESC to close.,P03-001,2h,components/sections/MegaMenu.tsx,Phase 03 — Navigation,Medium,"- [ ] Focus trapped + restored
+- [ ] ESC closes
+- [ ] Smooth open/close",Not started,P03-003
+Mobile navigation drawer,Hamburger toggles full-screen drawer on <768px; body scroll lock; accessible toggle button; animated reveal.,P03-001,1.5h,components/sections/MobileNav.tsx,Phase 03 — Navigation,High,"- [ ] Scroll locked when open
+- [ ] aria-expanded correct
+- [ ] Works at 360px",Not started,P03-004
+Search affordance + language selector,Search trigger opens overlay input (UI only); language selector dropdown stub; both keyboard accessible.,P03-001,1.5h,"components/sections/NavSearch.tsx, components/ui/LangSelector.tsx",Phase 03 — Navigation,Low,"- [ ] Search overlay opens/closes
+- [ ] Selector keyboard usable
+- [ ] No console errors",Not started,P03-005
+Footer,"Editorial footer with nav columns, newsletter stub, social, legal; responsive; consistent tokens.","P02-003,P02-005",1.5h,"components/sections/Footer.tsx, app/layout.tsx",Phase 03 — Navigation,Medium,"- [ ] All link groups present
+- [ ] Responsive stacking
+- [ ] Contrast AA",Not started,P03-006
+Hero layout + fullscreen media background,"Fullscreen hero with video/image bg (poster fallback), lazy/optimized; overlay gradient; content composition per §6.","P02-003,P03-001",2h,"components/sections/Hero.tsx, app/page.tsx",Phase 04 — Hero,Critical,"- [ ] Poster shown before video
+- [ ] No CLS
+- [ ] Mobile fallback image",Not started,P04-001
+Masked headline reveal (SplitType + GSAP),Headline animates in via line/word mask using SplitType + GSAP timeline; cleans up on unmount; reduced-motion shows static text.,P04-001,2h,"components/sections/Hero.tsx, lib/gsap.ts, hooks/useSplitReveal.ts",Phase 04 — Hero,High,"- [ ] 60 FPS reveal
+- [ ] Timeline cleaned up
+- [ ] Reduced-motion static",Not started,P04-002
+Magnetic CTA buttons,Reusable magnetic button reacts to pointer proximity; disabled on touch + reduced-motion; wraps Button primitive.,P02-002,1.5h,components/ui/MagneticButton.tsx,Phase 04 — Hero,Medium,"- [ ] Disabled on touch devices
+- [ ] Reduced-motion ignores effect
+- [ ] No layout shift",Not started,P04-003
+Custom cursor,Custom cursor follows pointer with easing; hover states on interactive elements; hidden on touch; reduced-motion friendly.,P04-001,1.5h,"components/ui/Cursor.tsx, hooks/usePointer.ts",Phase 04 — Hero,Low,"- [ ] Hidden on touch
+- [ ] No perf drop
+- [ ] Falls back to native cursor",Not started,P04-004
+Hero parallax + scroll progress,Subtle parallax on hero media tied to scroll via Lenis + ScrollTrigger; no jank; disabled under reduced-motion.,P04-001,1.5h,"components/sections/Hero.tsx, hooks/useScrollProgress.ts",Phase 04 — Hero,Medium,"- [ ] Synced to Lenis
+- [ ] 60 FPS
+- [ ] Reduced-motion disables parallax",Not started,P04-005
+"WebGL hero accent (optional, lazy)",Lazy-loaded R3F accent (e.g. volumetric/particles) behind hero; ssr:false; graceful fallback to static image; no impact on LCP.,P04-001,3h,components/three/HeroScene.tsx,Phase 04 — Hero,Low,"- [ ] Lazy-loaded (ssr:false)
+- [ ] Fallback if WebGL unsupported
+- [ ] LCP unaffected",Not started,P04-006
+Shared scroll-reveal system,Reusable reveal wrapper (mask/fade/slide/scale) driven by ScrollTrigger; single registration; reduced-motion disables; used by all sections.,P04-002,2h,"hooks/useReveal.ts, lib/gsap.ts, components/ui/Reveal.tsx",Phase 05 — Home Sections,High,"- [ ] One ScrollTrigger registration
+- [ ] Reduced-motion path
+- [ ] Reused, not duplicated",Done,P05-001
+About section,"Editorial about block with reveal animation, imagery, and accent typography; CMS-ready props.",P05-001,1.5h,components/sections/About.tsx,Phase 05 — Home Sections,Medium,"- [ ] Reveal on scroll
+- [ ] Responsive
+- [ ] Props-driven content",Done,P05-002
+Lifestyle storytelling section,Parallax imagery + editorial copy storytelling block; pinned or layered scroll effect; reduced-motion safe.,P05-001,2h,components/sections/Lifestyle.tsx,Phase 05 — Home Sections,Medium,"- [ ] Parallax 60 FPS
+- [ ] Reduced-motion fallback
+- [ ] Responsive imagery",Done,P05-004
+Featured projects section,Showcases featured projects via reusable ProjectCard; hover reveal; links to project detail; CMS-driven.,P05-001,2h,components/sections/FeaturedProjects.tsx,Phase 05 — Home Sections,High,"- [ ] Uses shared ProjectCard
+- [ ] Hover reveal smooth
+- [ ] Links resolve",Done,P05-003
+Animated statistics / counters,Counters animate when in view; format numbers; respects reduced-motion (show final value instantly).,P05-001,1.5h,"components/sections/Stats.tsx, hooks/useCountUp.ts",Phase 05 — Home Sections,Medium,"- [ ] Counts once on enter
+- [ ] Reduced-motion shows final
+- [ ] Correct number formatting",Done,P05-005
+Insights & Updates (Future Enhancement),"Future Enhancement (post-MVP): CMS-powered editorial content, market insights, and company updates. To be redesigned and implemented in a later phase after the core website is complete. Not in current MVP scope.",P05-001,1.5h,components/sections/NewsTeaser.tsx,Phase 05 — Home Sections,Low,"- [ ] Empty state handled
+- [ ] Links resolve
+- [ ] CMS-driven",Not started,P05-007
+Immersive Interactive Experience (Future Enhancement),Future Enhancement (post-MVP): advanced WebGL/Three.js storytelling and scroll-driven interactive experiences. To be redesigned and implemented in a later phase after the core website is complete. Not in current MVP scope.,P05-001,2.5h,components/sections/HorizontalShowcase.tsx,Phase 05 — Home Sections,Medium,"- [ ] Pin/unpin clean
+- [ ] Mobile fallback
+- [ ] No scroll trap",Not started,P05-006
+Closing CTA section,Full-bleed CTA with magnetic button + reveal; links to contact; strong editorial headline.,"P05-001,P04-003",1h,components/sections/CtaSection.tsx,Phase 05 — Home Sections,Low,"- [ ] Magnetic button reused
+- [ ] Links to /contact
+- [ ] Responsive",Done,P05-008
+Reusable ProjectCard component,"Typed ProjectCard with image, title, status, location; hover reveal; used by index + featured sections.",P02-004,1.5h,components/ui/ProjectCard.tsx,Phase 06 — Project Pages,High,"- [ ] Single source of truth
+- [ ] Hover reveal
+- [ ] Optimized image",Not started,P06-001
+Projects index grid + filtering,Filterable/animated grid by status/community; URL-synced filters; accessible filter controls; CMS-driven list.,P06-001,2.5h,"app/projects/page.tsx, components/sections/ProjectsGrid.tsx, components/ui/Filters.tsx",Phase 06 — Project Pages,High,"- [ ] Filters update grid
+- [ ] State reflected in URL
+- [ ] Keyboard accessible",Not started,P06-002
+Project detail dynamic route + template,Dynamic [slug] route with generateStaticParams; project hero + overview layout; 404 for unknown slug; metadata per project.,P06-001,2.5h,"app/projects/[slug]/page.tsx, components/sections/ProjectHero.tsx",Phase 06 — Project Pages,Critical,"- [ ] Static params generated
+- [ ] Unknown slug 404s
+- [ ] Per-project metadata",Not started,P06-003
+Project overview + amenities,Portable-text overview render + amenities grid with icons; reveal animations; CMS-driven.,P06-003,2h,"components/sections/ProjectOverview.tsx, components/sections/Amenities.tsx",Phase 06 — Project Pages,Medium,"- [ ] Portable text renders
+- [ ] Amenities responsive
+- [ ] Reveal on scroll",Not started,P06-004
+Horizontal construction timeline,Horizontal timeline of milestones with scroll-driven progress; mobile vertical fallback; CMS-driven timeline array.,"P06-003,P05-001",2.5h,components/sections/ConstructionTimeline.tsx,Phase 06 — Project Pages,Medium,"- [ ] Mobile vertical fallback
+- [ ] Progress synced to scroll
+- [ ] Reduced-motion safe",Not started,P06-005
+Project location / map block,Map embed/static map with project geopoint; lazy-loaded; address + directions link; no layout shift.,P06-003,1.5h,components/sections/LocationMap.tsx,Phase 06 — Project Pages,Low,"- [ ] Lazy-loaded
+- [ ] No CLS
+- [ ] Address fallback if no map",Not started,P06-006
+"Communities, lifestyle, innovation, careers, contact pages","Secondary routes built with shared sections + reveal; contact form (client validation, UI only); careers openings list; all responsive.","P06-001,P05-001",4h,"app/communities/page.tsx, app/lifestyle/page.tsx, app/innovation/page.tsx, app/careers/page.tsx, app/contact/page.tsx",Phase 06 — Project Pages,Medium,"- [ ] All routes complete
+- [ ] Contact form validates
+- [ ] Reuse shared sections",Not started,P06-007
+Masonry gallery layout,Responsive masonry grid; optimized images with correct sizes; reveal on scroll; no CLS.,P06-001,2h,components/sections/Gallery.tsx,Phase 07 — Gallery,High,"- [ ] No CLS
+- [ ] Responsive columns
+- [ ] Optimized images",Superseded,P07-001
+Lightbox viewer,"Accessible lightbox with prev/next, ESC, focus trap, swipe on touch; animated open/close; restores focus.",P07-001,2.5h,components/ui/Lightbox.tsx,Phase 07 — Gallery,High,"- [ ] Focus trapped + restored
+- [ ] Keyboard + swipe nav
+- [ ] ESC closes",Superseded,P07-002
+Gallery category filtering,Filter by category with animated layout transitions; reuses Filters component; accessible controls.,P07-001,1.5h,"components/sections/Gallery.tsx, components/ui/Filters.tsx",Phase 07 — Gallery,Medium,"- [ ] Layout animates on filter
+- [ ] Reuses Filters
+- [ ] Keyboard accessible",Superseded,P07-003
+Lazy image loading + blur placeholders,"Shared image wrapper: AVIF/WebP, blur placeholder, correct sizes, lazy below fold; used across gallery + cards.",P07-001,1.5h,components/ui/SmartImage.tsx,Phase 07 — Gallery,Medium,"- [ ] Blur-up works
+- [ ] No CLS
+- [ ] Reused project-wide",Superseded,P07-004
+Subtle particle / WebGL accents,Optional lazy particle accents that degrade gracefully; disabled on low-power/reduced-motion; no jank.,P04-006,2h,components/three/Particles.tsx,Phase 07 — Gallery,Low,"- [ ] Degrades gracefully
+- [ ] Disabled reduced-motion
+- [ ] No FPS drop",Superseded,P07-005
+Sanity project setup + client,Sanity studio + typed client configured; env vars documented; embedded studio route or separate; connection verified.,P01-011,2h,"lib/sanity/client.ts, sanity.config.ts, .env.example",Phase 08 — CMS,Critical,"- [ ] Client connects
+- [ ] Env vars documented
+- [ ] Studio accessible",Not started,P08-001
+Schema: project,"Project schema per master spec §11: title, slug, status, hero media, description (portable text), amenities[], timeline[], gallery[], location (geopoint).",P08-001,1.5h,sanity/schemas/project.ts,Phase 08 — CMS,High,"- [ ] Matches §11 fields
+- [ ] Slug validated unique
+- [ ] Preview configured",Not started,P08-002
+Schema: galleryImage + community,"Schemas per §11: galleryImage (image, alt, category, project ref); community (name, slug, summary, media).",P08-001,1h,"sanity/schemas/galleryImage.ts, sanity/schemas/community.ts",Phase 08 — CMS,Medium,"- [ ] Alt text required
+- [ ] Project ref works
+- [ ] Matches §11",Not started,P08-003
+Schema: newsPost + testimonial,"Schemas per §11: newsPost (title, slug, cover, body, author, publishedAt); testimonial (quote, author, role, avatar).",P08-001,1h,"sanity/schemas/newsPost.ts, sanity/schemas/testimonial.ts",Phase 08 — CMS,Medium,"- [ ] publishedAt sortable
+- [ ] Body portable text
+- [ ] Matches §11",Not started,P08-004
+GROQ queries + wire dynamic content,"Typed GROQ queries feed projects, gallery, news, testimonials into pages; ISR/revalidate configured; no hardcoded copy remains.","P08-002,P08-003,P08-004",3h,"lib/sanity/queries.ts, lib/sanity/types.ts, app/",Phase 08 — CMS,High,"- [ ] Pages render CMS data
+- [ ] Types generated
+- [ ] No hardcoded content",Not started,P08-005
+Seed content + draft preview,Seed script populates sample projects/news/testimonials; draft preview mode works; placeholder media only (no proprietary assets).,P08-005,2h,"sanity/seed.ts, lib/sanity/preview.ts",Phase 08 — CMS,Low,"- [ ] Seed runs cleanly
+- [ ] Preview shows drafts
+- [ ] Placeholder media only",Not started,P08-006
+Open Graph + Twitter cards,OG + Twitter meta on all routes; dynamic OG image generation; validated in social debuggers.,P09-001,1.5h,"lib/seo.ts, app/opengraph-image.tsx",Phase 09 — SEO,Medium,"- [ ] OG image renders
+- [ ] Twitter card valid
+- [ ] Per-page images",Not started,P09-002
+JSON-LD structured data,"Organization, RealEstateAgent, BreadcrumbList, and Article (news) JSON-LD injected; validates in Rich Results test.",P09-001,1.5h,"lib/schema.ts, components/seo/JsonLd.tsx",Phase 09 — SEO,Medium,"- [ ] Validates in Rich Results
+- [ ] Article schema on news
+- [ ] Breadcrumbs present",Not started,P09-003
+Semantic structure + alt text audit,"Single H1 per page, logical heading order, descriptive alt on all images, semantic landmarks throughout.",P06-007,1.5h,"components/, app/",Phase 09 — SEO,Medium,"- [ ] One H1/page
+- [ ] All images have alt
+- [ ] Landmarks correct",Not started,P09-005
+Per-route metadata (Next Metadata API),Every route exports title/description/canonical via Metadata API; project/news use generateMetadata from CMS; no duplicate titles.,"P06-007,P08-005",2h,"app//page.tsx (generateMetadata), lib/seo.ts",Phase 09 — SEO,High,"- [ ] Unique title/desc per route
+- [ ] Canonical set
+- [ ] Dynamic routes use CMS data",Not started,P09-001
+Sitemap + robots,"Dynamic sitemap.xml includes all static + CMS routes; robots.txt allows production, blocks dev/styleguide; correct host.",P09-001,1h,"app/sitemap.ts, app/robots.ts",Phase 09 — SEO,Medium,"- [ ] CMS routes in sitemap
+- [ ] Dev routes excluded
+- [ ] Valid robots.txt",Not started,P09-004
+Analytics + Search Console wiring,Privacy-friendly analytics + verification meta; deferred loading; no impact on Lighthouse.,P09-004,1h,"lib/analytics.ts, app/layout.tsx",Phase 09 — SEO,Low,"- [ ] Deferred load
+- [ ] Verification meta present
+- [ ] No perf regression",Not started,P09-006
+Image optimization pass,"All images via next/image, AVIF/WebP, correct sizes/priority; LCP image preloaded; zero CLS from media.",P07-004,2h,"next.config.ts, components/ui/SmartImage.tsx",Phase 10 — Performance,High,"- [ ] AVIF/WebP served
+- [ ] LCP image priority
+- [ ] CLS < 0.1",Not started,P10-001
+Code splitting + dynamic imports,All Three.js scenes + heavy client components dynamically imported (ssr:false where needed); RSC kept server-only; client bundle minimized.,P04-006,2h,"components/three/, components/sections/",Phase 10 — Performance,High,"- [ ] 3D lazy-loaded
+- [ ] No heavy client in RSC
+- [ ] Reduced JS on initial load",Not started,P10-002
+Font + CSS + critical resource optimization,Preload only critical fonts; preconnect to CMS/CDN; defer non-critical JS; minimize render-blocking resources.,P01-008,1.5h,"app/layout.tsx, lib/fonts.ts",Phase 10 — Performance,Medium,"- [ ] No render-blocking CSS
+- [ ] Critical fonts preloaded
+- [ ] Preconnects set",Not started,P10-004
+Bundle analysis + tree shaking,Bundle analyzer wired; no duplicate/unused deps; GSAP/three imports narrowed; identify and trim largest chunks.,P10-002,1.5h,"next.config.ts, package.json",Phase 10 — Performance,Medium,"- [ ] Analyzer report reviewed
+- [ ] No dead deps
+- [ ] Narrow imports",Not started,P10-003
+Animation performance audit (60 FPS),All animations use transform/opacity (GPU); no layout thrash; ScrollTriggers refreshed/cleaned; verified 60 FPS in DevTools on mid-tier laptop.,P05-001,2h,"components/, hooks/",Phase 10 — Performance,High,"- [ ] No layout-triggering props animated
+- [ ] 60 FPS in profiler
+- [ ] Triggers cleaned up",Not started,P10-005
+Lighthouse tuning to ≥ 95 + Core Web Vitals,"Lighthouse ≥ 95 in all four categories (mobile + desktop); LCP < 2.5s, CLS < 0.1, TBT < 200ms on deployed preview.","P10-001,P10-002,P10-004,P10-005",3h,various,Phase 10 — Performance,Critical,"- [ ] ≥95 all categories
+- [ ] CWV targets met
+- [ ] Report archived in repo",Not started,P10-006
+Unit tests (utils + hooks),Vitest configured; utils and custom hooks covered; runs in CI; meaningful assertions (no trivial snapshots).,P05-001,2h,"vitest.config.ts, /*.test.ts",Phase 11 — Testing,Medium,"- [ ] test passes
+- [ ] Hooks covered
+- [ ] Runs in CI",Not started,P11-001
+Component tests,"Key UI primitives (Button, Lightbox, Filters, Nav) tested for behavior + a11y roles; interactions verified.",P11-001,2.5h,/*.test.tsx (Testing Library),Phase 11 — Testing,Medium,"- [ ] Primitives covered
+- [ ] Roles asserted
+- [ ] Interaction tests pass",Not started,P11-002
+E2E critical flows (Playwright),"E2E covers nav, project browse→detail, gallery lightbox, contact form; runs headless in CI across viewports.",P06-007,3h,"playwright.config.ts, e2e/*.spec.ts",Phase 11 — Testing,High,"- [ ] Critical flows pass
+- [ ] Mobile + desktop projects
+- [ ] Green in CI",Not started,P11-003
+Accessibility tests (axe) + audit,Automated axe checks on key routes; manual keyboard + screen-reader pass; WCAG 2.1 AA contrast verified; zero critical violations.,P11-003,2h,e2e/a11y.spec.ts,Phase 11 — Testing,High,"- [ ] No critical axe violations
+- [ ] Full keyboard pass
+- [ ] AA contrast verified",Not started,P11-004
+Responsive QA 360→1920,Every route verified at 360/768/1024/1440/1920; no horizontal overflow; touch targets ≥ 44px; layouts intact.,P06-007,2h,QA checklist doc,Phase 11 — Testing,High,"- [ ] No overflow any breakpoint
+- [ ] Touch targets ≥ 44px
+- [ ] All routes checked",Not started,P11-005
+Reduced-motion + cross-browser QA,"prefers-reduced-motion disables/limits motion everywhere with content still accessible; verified on Chrome, Safari, Firefox, iOS Safari.",P10-005,2h,QA checklist doc,Phase 11 — Testing,Medium,"- [ ] Reduced-motion full path
+- [ ] Safari/iOS verified
+- [ ] No browser-specific breakage",Not started,P11-006
+Vercel project + environment setup,Vercel project linked; all env vars set for preview + prod; build succeeds on Vercel; image domains configured.,"P01-011,P08-001",1h,"vercel.json, env settings",,Critical,"- [ ] Vercel build green
+- [ ] Env vars set both envs
+- [ ] Image domains allowed",Not started,P12-001
+CI pipeline (lint/type/test/build),"CI runs lint, type-check, unit + E2E, and build on PRs; blocks merge on failure; caches deps for speed.",P11-003,1.5h,.github/workflows/ci.yml,,High,"- [ ] CI blocks on failure
+- [ ] All gates run
+- [ ] Dep caching works",Not started,P12-002
+Preview deployments + Lighthouse CI,Each PR gets a Vercel preview; Lighthouse CI runs against preview and fails build if any category < 95.,"P12-001,P12-002",1.5h,".github/workflows/lhci.yml, lighthouserc.js",,Medium,"- [ ] Preview per PR
+- [ ] LHCI gate at 95
+- [ ] Report on PR",Not started,P12-003
+Production deploy + custom domain,Production deployed on custom domain with HTTPS; redirects (www/apex) correct; site live and crawlable.,P12-003,1h,DNS + Vercel domain settings,,Critical,"- [ ] HTTPS valid
+- [ ] www/apex redirect
+- [ ] Live + indexable",Not started,P12-004
+Monitoring + error tracking,Error tracking + real-user CWV monitoring wired; alerts configured; minimal performance overhead.,P12-004,1.5h,"lib/monitoring.ts, app/layout.tsx",,Medium,"- [ ] Errors reported
+- [ ] RUM CWV captured
+- [ ] No perf regression",Not started,P12-005
+Launch checklist + handoff docs,Final launch checklist completed; README covers setup/CMS/deploy; content editor guide written; all spec deliverables (§14) checked off.,P12-004,1.5h,"http://README.md, docs/http://launch-checklist.md",,Low,"- [ ] §14 deliverables done
+- [ ] Editor guide written
+- [ ] Handoff complete",Not started,P12-006
+07A — Project Detail Architecture,,,,,Phase 07 — Project Detail,High,,Done,P07A
+07B — Premium Project Hero,,,,components/project/hero/ (9 components + barrel),Phase 07 — Project Detail,High,,Done,P07B
+07C — Project Overview & Highlights,,,,components/project/overview/ (8) · Project.overviewContent?,Phase 07 — Project Detail,High,,Done,P07C
+07D — Amenities & Lifestyle,,,,components/project/amenities/ (7) · Project.amenitiesContent?,Phase 07 — Project Detail,High,,Done,P07D
+07E — Immersive Gallery & Media,,,,components/project/gallery/ (8) · Project.galleryContent?,Phase 07 — Project Detail,High,,Done,P07E
+07F — Location & Connectivity,,,,components/project/location/ (7) · Project.locationContent?,Phase 07 — Project Detail,High,,Done,P07F
+"07H — Resources, Related Projects & Final Inquiry",,,,"components/project/{resources,related,final-inquiry}/ (8) · Project.closingContent?",Phase 07 — Project Detail,High,,Done,P07H
+07G — Investment & Digital Ownership,,,,components/project/investment/ (8) · Project.investmentContent?,Phase 07 — Project Detail,High,,Done,P07G
