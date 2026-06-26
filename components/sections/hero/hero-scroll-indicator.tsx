@@ -21,6 +21,7 @@ export function HeroScrollIndicator({ targetId, className }: HeroScrollIndicator
 				"group inline-flex flex-col items-center gap-2 text-text-muted transition-colors hover:text-text-primary focus-visible:text-text-primary",
 				className,
 			)}
+			data-hero-scroll-indicator
 		>
 			<span className="font-display-sans text-xs uppercase tracking-[0.3em]">
 				Scroll

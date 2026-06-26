@@ -10,8 +10,13 @@ export type HeroDescriptionProps = {
 };
 
 export function HeroDescription({ children, className }: HeroDescriptionProps) {
-return (
-		<Text size="base" tone="muted" className={cn("max-w-[52ch]", className)}>
+	return (
+		<Text
+			size="base"
+			tone="muted"
+			className={cn("max-w-[52ch]", className)}
+			data-hero-description
+		>
 			{children}
 		</Text>
 	);

@@ -19,7 +19,10 @@ export type HeroActionsProps = {
  */
 export function HeroActions({ primary, secondary, className }: HeroActionsProps) {
 	return (
-		<div className={cn("flex flex-col gap-4 sm:flex-row sm:items-center", className)}>
+		<div
+			className={cn("flex flex-col gap-4 sm:flex-row sm:items-center", className)}
+			data-hero-actions
+		>
 			<Button asChild variant="primary" size="lg">
 				<Link href={primary.href}>{primary.label}</Link>
 			</Button>

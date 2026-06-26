@@ -14,6 +14,7 @@ export type HeroHeadingProps = {
 /**
  * The page's single H1 lives here (proper heading hierarchy).
  * Eyebrow is decorative-but-readable; subheading is an H2-weighted lead.
+ * data-hero-heading targets all elements for SplitType reveal animations.
  */
 export function HeroHeading({
 	eyebrow,
@@ -27,6 +28,7 @@ export function HeroHeading({
 				size="sm"
 				tone="accent"
 				className="font-display-sans uppercase tracking-[0.28em]"
+				data-hero-heading
 			>
 				{eyebrow}
 			</Text>
@@ -34,11 +36,12 @@ export function HeroHeading({
 				level={1}
 				size="display"
 				className="max-w-[16ch] text-balance"
+				data-hero-heading
 			>
 				{heading}
 			</Heading>
 			{subheading ? (
-				<Text size="lg" tone="primary" className="max-w-[44ch]">
+				<Text size="lg" tone="primary" className="max-w-[44ch]" data-hero-heading>
 					{subheading}
 				</Text>
 			) : null}

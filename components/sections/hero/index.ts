@@ -2,6 +2,7 @@
  * Hero section barrel export.
  */
 export { Hero } from "./hero";
+export { HeroAnimation } from "./hero-animation";
 export { HeroMedia } from "./hero-media";
 export { HeroOverlay } from "./hero-overlay";
 export { HeroContent } from "./hero-content";

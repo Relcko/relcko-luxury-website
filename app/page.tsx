@@ -1,9 +1,9 @@
-import { Hero } from "@/components/sections/hero";
+import { HeroAnimation } from "@/components/sections/hero";
 
 export default function HomePage() {
 	return (
 		<>
-			<Hero nextSectionId="featured" />
+			<HeroAnimation nextSectionId="featured" />
 
 			{/* Phase 06+ sections mount below this anchor. */}
 			<section id="featured" aria-hidden="true" className="min-h-px" />
