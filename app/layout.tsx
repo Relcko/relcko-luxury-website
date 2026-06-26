@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { fontVariables } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { AnimationProvider } from "@/providers/animation-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <main id="main-content">{children}</main>
+          <AnimationProvider>
+            <main id="main-content">{children}</main>
+          </AnimationProvider>
         </ThemeProvider>
       </body>
     </html>

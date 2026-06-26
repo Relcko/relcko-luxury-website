@@ -1,21 +1,51 @@
 /**
- * Animation design tokens (Spec §13). Centralized so durations/easings stay
- * consistent once GSAP/Framer Motion are wired in Phase 02.
+ * Animation design tokens. Centralized so durations, delays, distances, and stagger values stay
+ * consistent across GSAP and Framer Motion.
  * NOTE: values only — no animation engine is imported or initialized here.
  */
+
+/**
+ * Animation durations in seconds.
+ */
 export const duration = {
-  fast: 0.3,
-  base: 0.6,
-  slow: 1.2,
+  instant: 0.1,
+  fast: 0.2,
+  base: 0.4,
+  slow: 0.6,
+  slower: 0.9,
 } as const;
 
-export const ease = {
-  out: [0.16, 1, 0.3, 1],
-  inOut: [0.65, 0, 0.35, 1],
-} as const;
-
+/**
+ * Animation delays in seconds.
+ */
 export const delay = {
   none: 0,
-  short: 0.08,
-  stagger: 0.12,
+  xs: 0.05,
+  sm: 0.1,
+  md: 0.2,
+  lg: 0.3,
 } as const;
+
+/**
+ * Animation distances in pixels (for slide/fade effects).
+ */
+export const distance = {
+  sm: 16,
+  md: 32,
+  lg: 64,
+  xl: 96,
+} as const;
+
+/**
+ * Stagger intervals in seconds (for lists/grids).
+ */
+export const stagger = {
+  tight: 0.04,
+  base: 0.08,
+  loose: 0.14,
+} as const;
+
+export type Duration = keyof typeof duration;
+export type Delay = keyof typeof delay;
+export type Distance = keyof typeof distance;
+export type Stagger = keyof typeof stagger;
