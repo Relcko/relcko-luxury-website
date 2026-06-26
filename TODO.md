@@ -60,10 +60,15 @@
 - [x] Build verification (lint, typecheck, build)
 - [x] Git commit + tag pushed
 
-## Phase 06A — Featured Projects
-- [ ] Project grid
-- [ ] Card hover states
-- [ ] Filter integration
+## Phase 06A — Featured Projects ✅
+- [x] Project interface (lib/project.ts)
+- [x] Mock projects data (lib/projects.ts)
+- [x] ProjectCard component with hover animation
+- [x] FeaturedProjects section component
+- [x] Project grid layout
+- [x] Card hover states
+- [x] Build verification passed
+- [x] Git commit pushed
 
 ## Phase 06B–06H — Homepage Sections
 - [ ] About section
