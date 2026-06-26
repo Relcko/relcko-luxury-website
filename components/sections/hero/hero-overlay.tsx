@@ -14,7 +14,7 @@ export type HeroOverlayProps = {
  */
 export function HeroOverlay({ className }: HeroOverlayProps) {
 	return (
-		<div aria-hidden="true" className={cn("absolute inset-0", className)}>
+		<div data-hero="overlay" aria-hidden="true" className={cn("absolute inset-0", className)}>
 			<div className="absolute inset-0 bg-gradient-to-t from-bg-base via-bg-base/40 to-bg-base/10" />
 			<div className="absolute inset-0 bg-gradient-to-r from-bg-base/70 via-transparent to-transparent" />
 		</div>

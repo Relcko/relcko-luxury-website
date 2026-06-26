@@ -38,16 +38,16 @@
 - [x] Mobile navigation drawer
 - [x] Animated underline effects
 
-## Phase 05A — Hero Architecture & Layout
-- [ ] Fullscreen media background
-- [ ] Overlay gradient
-- [ ] Container + section layout
+## Phase 05A — Hero Architecture & Layout ✅
+- [x] Fullscreen media background
+- [x] Overlay gradient
+- [x] Container + section layout
 
-## Phase 05B — Cinematic Hero Motion
-- [ ] Masked headline reveal (SplitType + GSAP)
-- [ ] Subtle parallax on scroll
-- [ ] Custom cursor integration
-- [ ] Magnetic CTA buttons
+## Phase 05B — Cinematic Hero Motion ✅
+- [x] Masked headline reveal (SplitType + GSAP)
+- [x] Subtle parallax on scroll
+- [x] Custom cursor integration
+- [x] Magnetic CTA buttons
 
 ## Phase 05C — Hero Performance & Polish
 - [ ] Lazy loading

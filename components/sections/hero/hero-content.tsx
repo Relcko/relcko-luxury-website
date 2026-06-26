@@ -23,14 +23,16 @@ export function HeroContent({ content, className }: HeroContentProps) {
 			size="max"
 			className={cn("relative z-10 flex h-full items-end pb-24 md:pb-28", className)}
 		>
-			<div className="grid w-full grid-cols-1 lg:grid-cols-12">
+			<div data-hero="content" className="grid w-full grid-cols-1 lg:grid-cols-12">
 				<div className="flex flex-col gap-6 lg:col-span-7 xl:col-span-6">
 					<HeroHeading
 						eyebrow={content.eyebrow}
 						heading={content.heading}
 						subheading={content.subheading}
 					/>
-					<HeroDescription>{content.description}</HeroDescription>
+					<div data-hero="description">
+						<HeroDescription>{content.description}</HeroDescription>
+					</div>
 					<HeroActions
 						primary={content.primaryCta}
 						secondary={content.secondaryCta}

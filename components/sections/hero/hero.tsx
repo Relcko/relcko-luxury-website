@@ -1,9 +1,14 @@
+"use client";
+
 /**
  * Hero — orchestrator component.
  */
+import { useRef } from "react";
 import type { HeroContent as HeroContentModel } from "@/lib/hero";
 import { heroContent as defaultHeroContent } from "@/lib/hero";
 import { cn } from "@/utils/cn";
+import { useHeroTimeline } from "@/hooks/use-hero-timeline";
+import { useHeroScroll } from "@/hooks/use-hero-scroll";
 import { HeroContent } from "./hero-content";
 import { HeroMedia } from "./hero-media";
 import { HeroOverlay } from "./hero-overlay";
@@ -27,8 +32,15 @@ export function Hero({
 	nextSectionId = "featured",
 	className,
 }: HeroProps) {
+	const rootRef = useRef<HTMLElement>(null);
+
+	useHeroTimeline({ scope: rootRef });
+	useHeroScroll({ scope: rootRef });
+
 	return (
 		<section
+			ref={rootRef}
+			data-hero="root"
 			aria-label={content.regionLabel}
 			className={cn(
 				"relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden",

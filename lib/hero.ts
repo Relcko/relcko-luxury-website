@@ -16,10 +16,12 @@ export type HeroMediaSource =
 	  }
 	| {
 			kind: "video";
-			/** Primary video source (mp4/webm). */
-			src: string;
-			/** Poster shown before/while the video loads. Prevents CLS. */
+			/** Ordered by preference; browser picks the first it can play. */
+			sources: Array<{ src: string; type: "video/webm" | "video/mp4" }>;
+			/** Optimized still shown as the LCP element + video fallback. */
 			poster: string;
+			/** Optional LQIP for the poster image. */
+			blurDataURL?: string;
 			/** Accessible label describing the footage. */
 			label: string;
 	  };

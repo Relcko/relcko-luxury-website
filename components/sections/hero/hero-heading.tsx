@@ -14,7 +14,8 @@ export type HeroHeadingProps = {
 /**
  * The page's single H1 lives here (proper heading hierarchy).
  * Eyebrow is decorative-but-readable; subheading is an H2-weighted lead.
- * data-hero-heading targets all elements for SplitType reveal animations.
+ * data-hero attributes target elements for animation.
+ * The heading wrapper uses line overflow-hidden for SplitType line masking.
  */
 export function HeroHeading({
 	eyebrow,
@@ -24,26 +25,26 @@ export function HeroHeading({
 }: HeroHeadingProps) {
 	return (
 		<div className={cn("flex flex-col gap-4", className)}>
-			<Text
-				size="sm"
-				tone="accent"
-				className="font-display-sans uppercase tracking-[0.28em]"
-				data-hero-heading
-			>
-				{eyebrow}
-			</Text>
-			<Heading
-				level={1}
-				size="display"
-				className="max-w-[16ch] text-balance"
-				data-hero-heading
-			>
-				{heading}
-			</Heading>
-			{subheading ? (
-				<Text size="lg" tone="primary" className="max-w-[44ch]" data-hero-heading>
-					{subheading}
+			<div data-hero="eyebrow">
+				<Text
+					size="sm"
+					tone="accent"
+					className="font-display-sans uppercase tracking-[0.28em]"
+				>
+					{eyebrow}
 				</Text>
+			</div>
+			<div data-hero="heading" className="[&_.line]:overflow-hidden">
+				<Heading level={1} size="display" className="max-w-[16ch] text-balance">
+					{heading}
+				</Heading>
+			</div>
+			{subheading ? (
+				<div data-hero="subheading">
+					<Text size="lg" tone="primary" className="max-w-[44ch]">
+						{subheading}
+					</Text>
+				</div>
 			) : null}
 		</div>
 	);
