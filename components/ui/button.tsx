@@ -1,5 +1,6 @@
-import { forwardRef } from "react";
+import { forwardRef, type ReactNode } from "react";
 import type { ButtonHTMLAttributes } from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/utils/cn";
 import { focusRing, transitionBase } from "@/lib/design/styles";
 
@@ -9,6 +10,10 @@ export type ButtonSize = "sm" | "md" | "lg";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  /** Render as a child component (e.g., Next.js Link). */
+  asChild?: boolean;
+  /** Child element to render when asChild is true. */
+  children?: ReactNode;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -27,11 +32,12 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { className, variant = "primary", size = "md", type = "button", ...props },
+  { className, variant = "primary", size = "md", type = "button", asChild, children, ...props },
   ref,
 ) {
+  const Comp = asChild ? Slot : "button";
   return (
-    <button
+    <Comp
       ref={ref}
       type={type}
       className={cn(
@@ -44,6 +50,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   );
 });

@@ -3,7 +3,7 @@
  */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";

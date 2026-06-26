@@ -6,3 +6,6 @@ export * from "./use-reduced-motion";
 export * from "./use-gsap-context";
 export * from "./use-match-media";
 export * from "./use-lenis";
+export * from "./use-scroll-direction";
+export * from "./use-scroll-lock";
+export * from "./use-focus-trap";

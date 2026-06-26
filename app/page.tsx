@@ -1,11 +1,12 @@
-import { PlaceholderScreen } from "@/components/ui/placeholder-screen";
+import { Hero } from "@/components/sections/hero";
 
 export default function HomePage() {
-  return (
-    <PlaceholderScreen
-      eyebrow="Lumi\u00e8re Estates"
-      title="Foundation ready."
-      description="Phase 01 scaffold is in place. Sections arrive in later phases."
-    />
-  );
+	return (
+		<>
+			<Hero nextSectionId="featured" />
+
+			{/* Phase 06+ sections mount below this anchor. */}
+			<section id="featured" aria-hidden="true" className="min-h-px" />
+		</>
+	);
 }
