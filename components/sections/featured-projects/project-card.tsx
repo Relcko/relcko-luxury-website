@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/utils/cn';
@@ -27,16 +27,16 @@ export function ProjectCard({
   priority = false,
   className,
 }: ProjectCardProps) {
-  const imageRef = { current: null };
+  const imageRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
   const handleMouseEnter = useCallback(() => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion || !imageRef.current) return;
     gsap.to(imageRef.current, { scale: 1.05, duration: 0.4, ease: 'power2.out' });
   }, [shouldReduceMotion]);
 
   const handleMouseLeave = useCallback(() => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion || !imageRef.current) return;
     gsap.to(imageRef.current, { scale: 1, duration: 0.4, ease: 'power2.out' });
   }, [shouldReduceMotion]);
 
@@ -59,9 +59,9 @@ export function ProjectCard({
   return (
     <Link href={`/projects/${project.slug}`} className={cn('block group', className)}>
       <Card interactive className="h-full">
-        {/* Image Container */}
+{/* Image Container */}
         <div
-          ref={imageRef as unknown as React.RefObject<HTMLDivElement>}
+          ref={imageRef}
           className="relative aspect-[4/3] overflow-hidden"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
