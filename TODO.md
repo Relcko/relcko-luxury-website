@@ -112,19 +112,67 @@
 - [x] lib/global-impact: CMS-ready content model + mock data (6 metrics)
 - [x] Build verification (lint ✓ tsc ✓ build ✓)
 
-## Phase 06F–06H — Homepage Sections
-- [ ] Gallery showcase
-- [ ] Call to action
+## Phase 06F — Vision & Roadmap ✅
+- [x] VisionRoadmap: section orchestrator with timeline grid
+- [x] RoadmapHeader: centered intro with eyebrow/heading/description + stagger scroll-reveal
+- [x] Timeline: alternating vertical timeline container
+- [x] TimelineItem: alternating left/right card layout
+- [x] TimelineMarker: animated vertical line + dot
+- [x] TimelineContent: title + description stack
+- [x] TimelineMedia: optional image with aspect ratio
+- [x] lib/vision-roadmap: CMS-ready content model + mock data (4 milestones)
+- [x] Build verification (lint ✓ tsc ✓ build ✓)
+
+## Phase 06G — Gallery & Media Showcase ✅
+- [x] GalleryShowcase: section orchestrator with header + grid
+- [x] GalleryCategory: eyebrow with tracking
+- [x] GalleryCaption: balanced caption text
+- [x] GalleryCTA: link button using Button w/ asChild
+- [x] GalleryMedia: layered image wrapper with aspect + scale reveal
+- [x] GalleryItem: masonry tile with 4 hover interactions
+- [x] GalleryGrid: responsive 1→2→6 column masonry
+- [x] lib/gallery-showcase: CMS-ready content model + mock data (7 items)
+- [x] Build verification (lint ✓)
+
+## Phase 06H — Call to Action (pending)
+- [ ] Closing CTA section
 - [ ] Footer
 
-## Phase 07 — Project Detail
-- [ ] Dynamic route template
-- [ ] Project hero
-- [ ] Overview + highlights
-- [ ] Amenities
-- [ ] Gallery
-- [ ] Location map
-- [ ] Investment details
+## Phase 07A — Project Detail Architecture ✅
+- [x] Project interface (lib/project.ts v1.6.0 frozen)
+- [x] ProjectSection shell component
+- [x] ProjectBreadcrumb navigation
+- [x] QuickFacts key metrics grid
+- [x] ProjectHeroShell placeholder
+- [x] components/project barrel export
+- [x] Build verification (lint ✓ type ✓)
+
+## Phase 07B — Cinematic Project Hero ✅
+- [x] useProjectHeroTimeline hook (SplitType, GSAP, lazy video)
+- [x] ProjectHero component (image/video, badges, title)
+- [x] Reuse hooks: useHeroVideo (lazy video), useProjectHeroTimeline (entrance)
+- [x] components/project barrel export
+- [x] Build verification (lint ✓ type ✓)
+
+## Phase 07C — Project Overview & Highlights ✅
+- [x] ProjectOverview component (description with fade-in)
+- [x] ProjectHighlights component (key points with checkmarks)
+- [x] components/project barrel export
+- [x] Build verification (lint ✓ type ✓)
+
+## Phase 07D — Amenities & Lifestyle ✅
+- [x] AmenitiesContent component (features grid with icons)
+- [x] Uses ProjectFeatures interface from lib/project
+- [x] components/project barrel export
+- [x] Build verification (lint ✓ type ✓ build ✓)
+
+## Phase 07 — Project Detail ✅ (COMPLETE)
+- [x] Dynamic route template (app/projects/[slug]/page.tsx)
+- [x] Gallery (ProjectGallery using existing GalleryGrid)
+- [x] Location map (ProjectLocation component)
+- [x] Investment details (ProjectInvestment component)
+- [x] Static generation (generateStaticParams for 5 projects)
+- [x] Build verification (ESLint ✓ TypeScript ✓ Build ✓)
 
 ## Phase 08 — CMS Foundation
 - [ ] Sanity schemas

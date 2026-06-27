@@ -11,3 +11,5 @@ export * from "./mobile-menu";
 export * from "./search-button";
 export * from "./language-selector";
 export * from "./portal";
+export * from "./footer";
+export * from "./footer-link";
