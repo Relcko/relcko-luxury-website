@@ -174,12 +174,17 @@
 - [x] Static generation (generateStaticParams for 5 projects)
 - [x] Build verification (ESLint ✓ TypeScript ✓ Build ✓)
 
-## Phase 08 — CMS Foundation
-- [ ] Sanity schemas
-- [ ] GROQ queries
-- [ ] Adapter layer
+## Phase 08A — CMS Foundation ✅ (COMPLETE)
+- [x] Sanity client configuration (lib/sanity/client.ts)
+- [x] GROQ queries for projects, communities, news (lib/sanity/queries.ts)
+- [x] Sanity types for all document types (lib/sanity/types.ts)
+- [x] Environment configuration (.env.local.example)
+- [x] Build verification (ESLint ✓ TypeScript ✓)
+
+## Phase 08 — CMS Foundation (remaining)
 - [ ] SEO metadata
 - [ ] Discovery engine
+- [ ] Adapter layer
 
 ## Phase 08E–08F — Production
 - [ ] Performance optimization

@@ -6,7 +6,17 @@
 
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+/**
+ * Basic Sanity image source for URL builder
+ */
+type SanityImageSource = {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+};
 
 /**
  * Environment variables (must be set in .env.local)

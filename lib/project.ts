@@ -252,6 +252,39 @@ export interface ProjectSeo {
 }
 
 // =============================================================================
+// Enum Labels (Single Source of Truth)
+// =============================================================================
+// Exported for reuse in Sanity schemas to avoid duplication.
+// DO NOT modify existing values - only add new ones.
+
+// Category labels - used in both frontend and CMS
+export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
+  residential: 'Residential',
+  commercial: 'Commercial',
+  'mixed-use': 'Mixed Use',
+  hospitality: 'Hospitality',
+  industrial: 'Industrial',
+  infrastructure: 'Infrastructure',
+} as const;
+
+// Status labels - used in both frontend and CMS
+export const STATUS_LABELS: Record<ProjectStatus, string> = {
+  planning: 'Planning',
+  'under-construction': 'Under Construction',
+  completed: 'Completed',
+  'sold-out': 'Sold Out',
+} as const;
+
+// Ownership model labels - used in both frontend and CMS
+export const OWNERSHIP_LABELS: Record<OwnershipModel, string> = {
+  freehold: 'Freehold',
+  leasehold: 'Leasehold',
+  strata: 'Strata',
+  'co-ownership': 'Co-Ownership',
+  fractional: 'Fractional',
+} as const;
+
+// =============================================================================
 // Additive Optional Fields Registry
 // =============================================================================
 // DO NOT edit existing fields. Add new optional fields only.
