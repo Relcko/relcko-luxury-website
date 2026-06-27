@@ -1,52 +1,88 @@
 /**
- * Site Map Builder — Luxury Real Estate Website
+ * Sitemap Builder — Luxury Real Estate Website
  *
- * Generates sitemap entries with static routes + CMS project routes.
+ * Generates sitemap.xml configuration.
  */
 
 import type { MetadataRoute } from 'next';
 import { env } from '@/lib/env';
-import { getProjectSlugs } from '@/lib/projects';
+import { getAllProjects } from '@/lib/projects';
 
 /**
- * Static routes for sitemap
+ * Build sitemap.xml entries
  */
-const STATIC_ROUTES = [
-  { path: '/', priority: 1.0, changeFrequency: 'weekly' as const },
-  { path: '/projects', priority: 0.9, changeFrequency: 'daily' as const },
-  { path: '/communities', priority: 0.7, changeFrequency: 'weekly' as const },
-  { path: '/lifestyle', priority: 0.7, changeFrequency: 'weekly' as const },
-  { path: '/innovation', priority: 0.7, changeFrequency: 'weekly' as const },
-  { path: '/news', priority: 0.8, changeFrequency: 'daily' as const },
-  { path: '/careers', priority: 0.6, changeFrequency: 'monthly' as const },
-  { path: '/contact', priority: 0.5, changeFrequency: 'monthly' as const },
-] as const;
-
-/**
- * Build sitemap entries
- */
-export function buildSitemap(): MetadataRoute.Sitemap {
+export async function buildSitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = env.siteUrl;
+  const now = new Date();
 
   // Static routes
-  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
-    url: `${baseUrl}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/communities`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/lifestyle`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/innovation`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/news`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/careers`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+  ];
 
-  // Dynamic project routes (fetch from CMS or mock)
-  // In Phase 08A+ this would use: await getProjectSlugs()
-  const projectSlugs = getProjectSlugs();
-  const projectEntries: MetadataRoute.Sitemap = projectSlugs.map((slug) => ({
-    url: `${baseUrl}/projects/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  // Dynamic project routes
+  try {
+    const projects = await getAllProjects();
 
-  return [...staticEntries, ...projectEntries];
+    const projectRoutes: MetadataRoute.Sitemap = projects.map(project => ({
+      url: `${baseUrl}/projects/${project.slug}`,
+      lastModified: new Date(project.timestamp?.updatedAt ?? project.timestamp?.createdAt ?? now),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+
+    return [...staticRoutes, ...projectRoutes];
+  } catch {
+    // If we can't fetch projects, just return static routes
+    return staticRoutes;
+  }
 }
 
 export default buildSitemap;
